@@ -6,7 +6,7 @@ import math
 
 # Running real time from webcam
 cap = cv2.VideoCapture('fire1.mp4')
-model = YOLO('fire.pt')
+model = YOLO('best_fire.pt')
 
 
 # Reading the classes
@@ -24,7 +24,7 @@ while True:
             confidence = box.conf[0]
             confidence = math.ceil(confidence * 100)
             Class = int(box.cls[0])
-            if confidence > 50:
+            if confidence > 20:
                 x1,y1,x2,y2 = box.xyxy[0]
                 x1, y1, x2, y2 = int(x1),int(y1),int(x2),int(y2)
                 cv2.rectangle(frame,(x1,y1),(x2,y2),(0,0,255),5)
